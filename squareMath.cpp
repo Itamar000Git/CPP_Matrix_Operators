@@ -2,6 +2,7 @@
 #include<iostream>
 #include <cmath>
 #include"squareMath.hpp"
+#include "rows.hpp"
 
 namespace matrix_math
 {  
@@ -339,17 +340,19 @@ namespace matrix_math
         return *this;
     }
 
-    double* SquareMatrix::operator[](int index){//index operator
+
+
+    rows SquareMatrix::operator[](int index){//index operator
         if(columns <= 0){
             throw std::invalid_argument("Matrix size must be positive");
         }
         if(columns > 100){
             throw std::invalid_argument("Matrix size must be less than 100");
         }
-        if(index>=columns || index<0){
+        if(index>=columns || index<0){  
             throw std::out_of_range("Out of range index");
         }
-        return matrix[index];//return the row of the matrix
+        return rows(matrix[index],columns);//return the row of the matrix
     }
 
     double SquareMatrix::sum() const{//sum of all elements in the matrix
@@ -379,9 +382,7 @@ namespace matrix_math
         if(columns > 100){
             throw std::invalid_argument("Matrix size must be less than 100");
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
 
         return this->sum() == other.sum();//compare the sum of the elements in the matrix
     }
@@ -392,9 +393,7 @@ namespace matrix_math
         if(columns > 100){
             throw std::invalid_argument("Matrix size must be less than 100");
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
         return !(*this == other);//using the equal operator that compares the sum of the elements in the matrix.
     }
 
@@ -408,9 +407,7 @@ namespace matrix_math
         if(columns == 1){
             return matrix[0][0] > other.matrix[0][0];
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
         return this->sum()>other.sum();
     }
     bool SquareMatrix::operator<(const SquareMatrix &other){//less operator
@@ -423,9 +420,7 @@ namespace matrix_math
         if(columns == 1){
             return matrix[0][0] < other.matrix[0][0];
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
         return this->sum()<other.sum();
     }
     bool SquareMatrix::operator>=(const SquareMatrix &other){//greater or equal operator
@@ -438,9 +433,7 @@ namespace matrix_math
         if(columns == 1){
             return matrix[0][0] >= other.matrix[0][0];
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
         return this->sum()>=other.sum();
     }
     bool SquareMatrix::operator<=(const SquareMatrix &other){//less or equal operator
@@ -453,9 +446,7 @@ namespace matrix_math
         if(columns == 1){
             return matrix[0][0] <= other.matrix[0][0];
         }
-        if(columns != other.columns){
-            throw std::invalid_argument("Matrices must be of the same size");
-        }
+
         return this->sum()<=other.sum();
     }
 
@@ -646,3 +637,4 @@ namespace matrix_math
     }
     
 }
+

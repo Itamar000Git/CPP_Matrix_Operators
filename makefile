@@ -1,7 +1,7 @@
 #itamarbabai98@gmail.com
 C = g++
 
-HEADERS =squareMath.hpp doctest.h
+HEADERS =squareMath.hpp doctest.h rows.hpp
 Target = main
 TEST_TARGET = Test_prog
 FLAGS = -c -g -Wall

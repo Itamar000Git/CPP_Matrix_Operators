@@ -2,6 +2,7 @@
 
 #ifndef squareMath_hpp
 #define squareMath_hpp
+#include "rows.hpp"
 
 namespace matrix_math
 {  
@@ -37,7 +38,7 @@ namespace matrix_math
 
             SquareMatrix operator~(); //transpose
 
-            double* operator[](int index); //index operator
+            rows operator[](int index); //index operator
             double sum()const; //sum of all elements in the matrix
 
             bool operator==(const SquareMatrix &other); //equal operator

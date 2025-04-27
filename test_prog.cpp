@@ -461,7 +461,10 @@ TEST_CASE("Testing matrix1[] (index) operator"){
     CHECK(matrix1[0][1] == 2);
     CHECK(matrix1[0][2] == 3);
 
-    double* row = matrix1[0];
+
+    //double* row = matrix1[0];
+    rows row = matrix1[0];
+
     CHECK(row[0] == 1);
     CHECK(row[1] == 2);
     CHECK(row[2] == 3);
@@ -470,7 +473,7 @@ TEST_CASE("Testing matrix1[] (index) operator"){
 
     CHECK_THROWS_AS(matrix1[3][0], std::out_of_range); //check if its possible to access a column that is out of range
     CHECK_THROWS_AS(matrix1[-1][0], std::out_of_range); //check if its possible to access a column that is out of range
-
+    CHECK_THROWS_AS(matrix1[2][15], std::out_of_range); //check if its possible to access a column that is out of range
 }
 TEST_CASE("Testing matrix1==matrix1 and matrix1!=matrix2 operator"){//by their sum
     std::cout<<"||||||||||||||||||||Testing matrix1==matrix2 and matrix1!=matrix2 operator|||||||||||||||||||||||"<<std::endl;
@@ -501,8 +504,7 @@ TEST_CASE("Testing matrix1==matrix1 and matrix1!=matrix2 operator"){//by their s
     CHECK(matrix1!=matrix2);
     CHECK_FALSE(matrix1!=matrix1);
 
-    CHECK_THROWS_AS(matrix1==matrix3, std::invalid_argument);
-    CHECK_THROWS_AS(matrix1!=matrix3, std::invalid_argument);
+
 }
 
 TEST_CASE("Testing >= , <= , > , < operators"){
@@ -533,10 +535,7 @@ TEST_CASE("Testing >= , <= , > , < operators"){
     matrix3[0][0]=1.0;
     matrix4[0][0]=2.0;
 
-    CHECK_THROWS_AS(matrix1>matrix3, std::invalid_argument);
-    CHECK_THROWS_AS(matrix1<matrix3, std::invalid_argument);
-    CHECK_THROWS_AS(matrix1>=matrix3, std::invalid_argument);
-    CHECK_THROWS_AS(matrix1<=matrix3, std::invalid_argument);
+
     CHECK(matrix4>=matrix3);
     CHECK(matrix3<=matrix4);
     CHECK(matrix4>matrix3);

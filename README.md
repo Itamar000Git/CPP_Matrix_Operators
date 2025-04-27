@@ -51,12 +51,12 @@ This project implements a `SquareMatrix` class in C++ to handle operations on sq
 ```bash
 CPP_OPERATORS/
 ├── main.cpp
-├── SquareMatrix.cpp
+├── SquareMath.cpp
 ├── Test_prog.cpp
 ├── doctest.cpp
 ├── doctest.h
-├── SquareMatrix.hpp
-├── Test_prog.hpp
+├── SquareMath.hpp
+├── rows.hpp
 ├── Makefile
 └── README.md
 ```
